@@ -2,14 +2,15 @@ from pyrogram import filters
 from pyrogram.types import Message, CallbackQuery
 
 from Pulse import app, YouTube
+from Pulse.platforms.Youtube import is_autoplay_on, set_autoplay
 
 from Pulse.utils.inline.play import stream_markup
 
 @app.on_message(filters.command(["autoplay"]) & filters.group)
 async def autoplay_cmd(client, message: Message):
     chat_id = message.chat.id
-    new_state = not YouTube.is_autoplay_on(chat_id)
-    YouTube.set_autoplay(chat_id, new_state)
+    new_state = not is_autoplay_on(chat_id)
+    set_autoplay(chat_id, new_state)
     if new_state:
         await message.reply_text("<blockquote><emoji id='5397733426654626788'>✨</emoji> <b>𝐀ᴜᴛᴏᴘʟᴀʏ ιs ηᴏᴡ 𝐎𝐍</b></blockquote>")
     else:
@@ -18,8 +19,8 @@ async def autoplay_cmd(client, message: Message):
 @app.on_callback_query(filters.regex(r"^Autoplay_Toggle\|(.+)"))
 async def autoplay_cb(client, CallbackQuery):
     chat_id = int(CallbackQuery.matches[0].group(1))
-    new_state = not YouTube.is_autoplay_on(chat_id)
-    YouTube.set_autoplay(chat_id, new_state)
+    new_state = not is_autoplay_on(chat_id)
+    set_autoplay(chat_id, new_state)
     
     await CallbackQuery.answer(
         f"Autoplay is now {'ON' if new_state else 'OFF'}", show_alert=True
