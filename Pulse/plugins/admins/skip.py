@@ -29,7 +29,7 @@ from Pulse.misc import db
 from Pulse.utils.database import get_loop
 from Pulse.utils.decorators import AdminRightsCheck
 from Pulse.utils.inline import close_markup, stream_markup
-from Pulse.utils.stream.autoclear import auto_clean
+from Pulse.utils.stream.autoclear import auto_clean, auto_turn
 from Pulse.utils.thumbnails import get_thumb
 from config import BANNED_USERS
 
@@ -61,8 +61,11 @@ async def skip(cli, message: Message, _, chat_id):
                             if popped:
                                 await auto_clean(popped)
                             if not check:
-                                try:
-                                    await message.reply_text(
+                                await auto_turn(chat_id, popped)
+                                check = db.get(chat_id)
+                                if not check:
+                                    try:
+                                        await message.reply_text(
                                         text=_["admin_6"].format(
                                             message.from_user.mention,
                                             message.chat.title,
@@ -89,8 +92,11 @@ async def skip(cli, message: Message, _, chat_id):
             if popped:
                 await auto_clean(popped)
             if not check:
-                await message.reply_text(
-                    text=_["admin_6"].format(
+                await auto_turn(chat_id, popped)
+                check = db.get(chat_id)
+                if not check:
+                    await message.reply_text(
+                        text=_["admin_6"].format(
                         message.from_user.mention, message.chat.title
                     ),
                     reply_markup=close_markup(_),

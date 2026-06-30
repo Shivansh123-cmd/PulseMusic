@@ -48,7 +48,7 @@ from Pulse.utils.database import (
 from Pulse.utils.exceptions import AssistantErr
 from Pulse.utils.formatters import check_duration, seconds_to_min, speed_converter
 from Pulse.utils.inline.play import stream_markup
-from Pulse.utils.stream.autoclear import auto_clean
+from Pulse.utils.stream.autoclear import auto_clean, auto_turn
 from Pulse.utils.thumbnails import get_thumb
 from strings import get_string
 
@@ -351,24 +351,8 @@ class Call(PyTgCalls):
                 await set_loop(chat_id, loop)
             await auto_clean(popped)
             if not check:
-                try:
-                    if popped and "vidid" in popped and YouTube.is_autoplay_on(chat_id):
-                        nxt = await YouTube.autoplay_next(popped["vidid"], chat_id)
-                        if nxt:
-                            check = [{
-                                "file": f"vid_{nxt['vidid']}",
-                                "title": nxt["title"],
-                                "by": "Autoplay [Bot]",
-                                "chat_id": popped.get("chat_id", chat_id),
-                                "streamtype": "audio",
-                                "vidid": nxt["vidid"],
-                                "played": 0,
-                                "dur": nxt["duration_min"],
-                                "seconds": 0,
-                            }]
-                            db[chat_id] = check
-                except Exception:
-                    pass
+                await auto_turn(chat_id, popped)
+                check = db.get(chat_id)
 
                 if not check:
                     await _clear_(chat_id)
