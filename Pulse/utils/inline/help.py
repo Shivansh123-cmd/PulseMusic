@@ -34,7 +34,7 @@ from pyrogram.enums import ButtonStyle
 # creating first partition of menu
 
 def first_page(_):
-    controll_button = [InlineKeyboardButton(text="ʙᴀᴄᴋ ⤶", callback_data="settingsback_helper", style=ButtonStyle.DANGER)]
+    controll_button = [InlineKeyboardButton(text="ʙᴀᴄᴋ ⤶", callback_data="settingsback_helper", style=ButtonStyle.DANGER, icon_custom_emoji_id="6152069270269334526")]
     first_page_menu = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(text=_["H_B_1"], callback_data="help_callback hb1", style=ButtonStyle.PRIMARY), InlineKeyboardButton(text=_["H_B_2"], callback_data="help_callback hb2", style=ButtonStyle.PRIMARY), InlineKeyboardButton(text=_["H_B_3"], callback_data="help_callback hb3", style=ButtonStyle.PRIMARY)],
@@ -51,7 +51,7 @@ def first_page(_):
 # creating second partition of menu
 
 def second_page(_):
-	controll_button = [InlineKeyboardButton(text="◁", callback_data=f"settings_back_helper_fixed", style=ButtonStyle.PRIMARY), InlineKeyboardButton(text="HOME", callback_data=f"settingsback_helper", style=ButtonStyle.SUCCESS, icon_custom_emoji_id="5397733426654626788"), InlineKeyboardButton(text="▷", callback_data=f"settings_back_helper", style=ButtonStyle.PRIMARY)]
+	controll_button = [InlineKeyboardButton(text="◁", callback_data=f"settings_back_helper_fixed", style=ButtonStyle.PRIMARY, icon_custom_emoji_id="6255793039705377676"), InlineKeyboardButton(text="HOME", callback_data=f"settingsback_helper", style=ButtonStyle.SUCCESS, icon_custom_emoji_id="5397733426654626788"), InlineKeyboardButton(text="▷", callback_data=f"settings_back_helper", style=ButtonStyle.PRIMARY, icon_custom_emoji_id="6255793039705377676")]
 	second_page_menu = InlineKeyboardMarkup(
 		[
 			[InlineKeyboardButton(text=_["H_B_10"], callback_data="help_callback hb10", style=ButtonStyle.PRIMARY), InlineKeyboardButton(text=_["H_B_11"], callback_data="help_callback hb11", style=ButtonStyle.PRIMARY), InlineKeyboardButton(text=_["H_B_12"], callback_data="help_callback hb12", style=ButtonStyle.PRIMARY)],
@@ -65,7 +65,7 @@ def second_page(_):
 
 # Just an common button
 def help_back_markup(_):
-	upl = InlineKeyboardMarkup([[InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data=f"settings_back_helper", style=ButtonStyle.DANGER)]])
+	upl = InlineKeyboardMarkup([[InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data=f"settings_back_helper", style=ButtonStyle.DANGER, icon_custom_emoji_id="6152069270269334526")]])
 	return upl
 
 
