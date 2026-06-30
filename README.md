@@ -7,7 +7,10 @@
 <a href="https://github.com/SUDEEPBOTS/PulseMusic/network/members"> <img src="https://img.shields.io/github/forks/SUDEEPBOTS/PulseMusic?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 <a href="https://github.com/SUDEEPBOTS/PulseMusic/issues"> <img src="https://img.shields.io/github/issues/SUDEEPBOTS/PulseMusic?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 <a href="https://github.com/SUDEEPBOTS/PulseMusic/pulls"> <img src="https://img.shields.io/github/issues-pr/SUDEEPBOTS/PulseMusic?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/SUDEEPBOTS/PulseMusic/blob/main/LICENSE"> <img src="https://img.shields.io/github/license/SUDEEPBOTS/PulseMusic?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<br>
 <a href="https://t.me/Zcziiyy"><img src="https://img.shields.io/badge/Join-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/Zcziiyy"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 
 <p align="center">
@@ -23,6 +26,7 @@
 - **✨ ᴘʀᴇᴍɪᴜᴍ ᴜɪ:** Beautiful inline keyboards with modern custom emojis and formatted text.
 - **♾️ sᴍᴀʀᴛ ᴀᴜᴛᴏᴘʟᴀʏ:** Never let the music stop! Auto-queues related songs perfectly.
 - **⚡️ ᴍᴏᴅᴇʀɴ & ʟɪɢʜᴛᴡᴇɪɢʜᴛ:** Optimized for speed, utilizing `cloudflared` & lightweight async methods.
+- **🚀 ʀᴇɴᴅᴇʀ & ʜᴇʀᴏᴋᴜ ʀᴇᴀᴅʏ:** Built-in keeping-alive web server for seamless free-tier hosting on Render & Heroku.
 
 ---
 
@@ -42,21 +46,49 @@
 </details>
 
 <details>
-<summary><b>💻 ᴅᴇᴘʟᴏʏ ᴏɴ ᴠᴘs</b></summary>
+<summary><b>💻 ᴅᴇᴘʟᴏʏ ᴏɴ ᴠᴘs / ʟᴏᴄᴀʟ</b></summary>
 <br>
 
+**1. Clone the Repository:**
+```bash
+git clone https://github.com/SUDEEPBOTS/PulseMusic
+cd PulseMusic
+```
+
+**2. Install Dependencies:**
 ```bash
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install git python3-pip ffmpeg -y
-git clone https://github.com/SUDEEPBOTS/PulseMusic
-cd PulseMusic
+sudo apt-get install python3-pip ffmpeg -y
 pip3 install -U -r requirements.txt
+```
+
+**3. Configure Environment:**
+```bash
 cp sample.env .env
-# Edit .env file with your vars
+nano .env # Fill in your API_ID, API_HASH, BOT_TOKEN, MONGO_DB_URI
+```
+
+**4. Start the Bot:**
+```bash
 python3 -m Pulse
+# OR keep it running in background
+tmux new-session -d -s pulsebot "bash start"
 ```
 </details>
+
+---
+
+## ⚙️ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ ᴠᴀʀɪᴀʙʟᴇs
+
+- `API_ID` - Get this from my.telegram.org.
+- `API_HASH` - Get this from my.telegram.org.
+- `BOT_TOKEN` - Get this from @BotFather.
+- `MONGO_DB_URI` - Your MongoDB cluster URI from mongodb.com.
+- `OWNER_ID` - Your Telegram User ID.
+- `LOGGER_ID` - A Telegram Group ID where the bot will send logs (Add bot as admin).
+- `RENDER` - Set this to `True` if deploying on Render to activate keep-alive.
+- `PING_URL` - Your Render application URL for keep-alive ping.
 
 ---
 
@@ -70,5 +102,6 @@ For all updates, features requests, and bug reports, join our support channels:
 
 ---
 <p align="center">
-  <b>Made with ❤️ by <a href="https://github.com/SUDEEPBOTS">SUDEEPBOTS</a></b>
+  <b>Made with ❤️ by <a href="https://github.com/SUDEEPBOTS">SUDEEPBOTS</a></b><br>
+  Licensed under the <a href="LICENSE">MIT License</a>.
 </p>
