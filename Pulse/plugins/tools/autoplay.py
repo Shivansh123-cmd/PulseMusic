@@ -27,14 +27,14 @@ async def autoplay_cb(client, CallbackQuery):
     
     # Optionally update the player buttons
     try:
-        from Pulse.utils.formatters import get_string
-        from Pulse.misc import db
-        # We need _ but we can just skip updating if it's too complex or just let it be.
-        # But for premium experience, let's update it!
-        language = "en"
-        _ = get_string(language)
-        buttons = stream_markup(_, chat_id)
-        await CallbackQuery.message.edit_reply_markup(reply_markup=buttons)
+        reply_markup = CallbackQuery.message.reply_markup
+        if reply_markup and reply_markup.inline_keyboard:
+            for row in reply_markup.inline_keyboard:
+                for btn in row:
+                    if btn.callback_data and btn.callback_data.startswith("Autoplay_Toggle|"):
+                        btn.text = "𝐀ᴜᴛᴏᴘʟᴀʏ ➜ " + ("𝐎ɴ" if new_state else "𝐎ғғ")
+            
+            await CallbackQuery.message.edit_reply_markup(reply_markup=reply_markup)
     except Exception as e:
         pass
 
