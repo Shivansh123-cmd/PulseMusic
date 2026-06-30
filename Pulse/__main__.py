@@ -44,6 +44,14 @@ async def init():
     ):
         LOGGER(__name__).error("Assistant client variables not defined, exiting...")
         exit()
+    if config.RENDER:
+        try:
+            import server
+            server.keep_alive_ping()
+            LOGGER(__name__).info("Web server started for Render keep-alive.")
+        except Exception as e:
+            LOGGER(__name__).error(f"Failed to start web server: {e}")
+
     await sudo()
     try:
         users = await get_gbanned()

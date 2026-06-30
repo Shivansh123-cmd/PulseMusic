@@ -29,11 +29,14 @@
 ## 🚀 ᴅᴇᴘʟᴏʏᴍᴇɴᴛ
 
 <details>
-<summary><b>🔥 ᴅᴇᴘʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ</b></summary>
+<summary><b>🔥 ᴅᴇᴘʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ & ʀᴇɴᴅᴇʀ</b></summary>
 <br>
 <p align="center">
 <a href="https://dashboard.heroku.com/new?template=https://github.com/SUDEEPBOTS/PulseMusic">
   <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-008000?style=for-the-badge&logo=heroku" width="200" height="40"/>
+</a>
+<a href="https://render.com/deploy?repo=https://github.com/SUDEEPBOTS/PulseMusic">
+  <img src="https://img.shields.io/badge/Deploy%20to%20Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" width="200" height="40"/>
 </a>
 </p>
 </details>
